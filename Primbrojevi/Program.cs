@@ -32,8 +32,9 @@ namespace Vsite.Pood
         // Primjer iz knjige  Robert C. Martin: "Agile Software Development"!!!
         public static int[] GenerirajPrimBrojeve(int max)
         {
-            if (max >= 2)
-            {
+            if (max < 2)
+                return new int[0]; // vrati prazan niz
+            else {
                 // deklaracije
                 int s = max + 1; // duljina niza
                 bool[] f = new bool[s]; // niz s primbrojevima
@@ -48,8 +49,7 @@ namespace Vsite.Pood
 
                 // sito (ide do kvadratnog korijena maksimalnog broja)
                 int j;
-                for (i = 2; i < Math.Sqrt(s) + 1; ++i)
-                {
+                for (i = 2; i < Math.Sqrt(s) + 1; ++i) {
                     if (f[i]) // ako i nije prekrižen, prekriži njegove višekratnike
                     {
                         for (j = 2 * i; j < s; j += i)
@@ -59,8 +59,7 @@ namespace Vsite.Pood
 
                 // koliko je primbrojeva?
                 int broj = 0;
-                for (i = 0; i < s; ++i)
-                {
+                for (i = 0; i < s; ++i) {
                     if (f[i])
                         ++broj;
                 }
@@ -68,15 +67,12 @@ namespace Vsite.Pood
                 int[] primovi = new int[broj];
 
                 // prebaci primbrojeve u rezultat
-                for (i = 0, j = 0; i < s; ++i)
-                {
+                for (i = 0, j = 0; i < s; ++i) {
                     if (f[i])
                         primovi[j++] = i;
                 }
                 return primovi; // vrati niz brojeva
             }
-            else
-                return new int[0]; // vrati prazan niz
         }
     }
 }
