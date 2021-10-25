@@ -6,17 +6,17 @@ namespace Vsite.Pood
     {
         static void Main(string[] args)
         {
-            IspišiPrimbrojeve(0);
+            GenerirajPrimbrojeve(0);
             Console.ReadKey();
-            IspišiPrimbrojeve(1);
+            GenerirajPrimbrojeve(1);
             Console.ReadKey();
-            IspišiPrimbrojeve(2);
+            GenerirajPrimbrojeve(2);
             Console.ReadKey();
-            IspišiPrimbrojeve(100);
+            GenerirajPrimbrojeve(100);
             Console.ReadKey();
         }
 
-        static void IspišiPrimbrojeve(int max)
+        static void GenerirajPrimbrojeve(int max)
         {
             Console.WriteLine("Primbrojevi do {0}:", max);
             var brojevi = GenerirajPrimBrojeve(max);
