@@ -29,6 +29,10 @@ namespace Vsite.Pood
             }
         }
 
+        private static int s;
+        private static bool[] f;
+        private static int[] primovi;
+
         // Primjer iz knjige  Robert C. Martin: "Agile Software Development"!!!
         public static int[] GenerirajPrimBrojeve(int max)
         {
@@ -36,8 +40,8 @@ namespace Vsite.Pood
                 return new int[0]; // vrati prazan niz
             else {
                 // deklaracije
-                int s = max + 1; // duljina niza
-                bool[] f = new bool[s]; // niz s primbrojevima
+                s = max + 1; // duljina niza
+                f = new bool[s]; // niz s primbrojevima
                 int i;
 
                 // inicijaliziramo sve na true
@@ -64,7 +68,7 @@ namespace Vsite.Pood
                         ++broj;
                 }
 
-                int[] primovi = new int[broj];
+                primovi = new int[broj];
 
                 // prebaci primbrojeve u rezultat
                 for (i = 0, j = 0; i < s; ++i) {
