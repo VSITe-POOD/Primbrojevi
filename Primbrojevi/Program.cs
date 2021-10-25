@@ -40,46 +40,60 @@ namespace Vsite.Pood
             else
             {
                 // deklaracije
-                s = max + 1; // duljina niza
-                f = new bool[s]; // niz s primbrojevima
-                int i;
-
-                // inicijaliziramo sve na true
-                for (i = 0; i < s; ++i)
-                    f[i] = true;
-
-                // ukloni 0 i 1 koji su primbrojevi po definiciji
-                f[0] = f[1] = false;
+                InicijalizirajSito(max);
 
                 // sito (ide do kvadratnog korijena maksimalnog broja)
-                int j;
-                for (i = 2; i < Math.Sqrt(s) + 1; ++i)
-                {
-                    if (f[i]) // ako i nije prekrižen, prekriži njegove višekratnike
-                    {
-                        for (j = 2 * i; j < s; j += i)
-                            f[j] = false; // višekratnik nije primbroj
-                    }
-                }
+                ProsijajSito();
 
                 // koliko je primbrojeva?
-                int broj = 0;
-                for (i = 0; i < s; ++i)
-                {
-                    if (f[i])
-                        ++broj;
-                }
+                SkupiPrimove();
 
-                primovi = new int[broj];
-
-                // prebaci primbrojeve u rezultat
-                for (i = 0, j = 0; i < s; ++i)
-                {
-                    if (f[i])
-                        primovi[j++] = i;
-                }
                 return primovi; // vrati niz brojeva
             }
+        }
+
+        private static void SkupiPrimove()
+        {
+            int broj = 0;
+            for (int i = 0; i < s; ++i)
+            {
+                if (f[i])
+                    ++broj;
+            }
+
+            primovi = new int[broj];
+
+            // prebaci primbrojeve u rezultat
+            for (int i = 0, j = 0; i < s; ++i)
+            {
+                if (f[i])
+                    primovi[j++] = i;
+            }
+        }
+
+        private static void ProsijajSito()
+        {
+            for (int i = 2; i < Math.Sqrt(s) + 1; ++i)
+            {
+                if (f[i]) // ako i nije prekrižen, prekriži njegove višekratnike
+                {
+                    for (int j = 2 * i; j < s; j += i)
+                        f[j] = false; // višekratnik nije primbroj
+                }
+            }
+        }
+
+        private static void InicijalizirajSito(int max)
+        {
+            s = max + 1; // duljina niza
+            f = new bool[s]; // niz s primbrojevima
+
+            // inicijaliziramo sve na true
+            for (int i = 0; i < s; ++i)
+                f[i] = true;
+
+            // ukloni 0 i 1 koji su primbrojevi po definiciji
+            f[0] = f[1] = false;
         }
     }
 }
