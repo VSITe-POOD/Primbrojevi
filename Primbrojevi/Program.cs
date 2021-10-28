@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Vsite.Pood
 {
@@ -28,8 +30,7 @@ namespace Vsite.Pood
                     Console.WriteLine(broj);
             }
         }
-        private static int s;
-        private static bool [] f;
+        private static bool [] neelimirani;
         private static int [] primovi;
 
         // Primjer iz knjige  Robert C. Martin: "Agile Software Development"!!!
@@ -39,8 +40,8 @@ namespace Vsite.Pood
                 return new int[0]; // vrati prazan niz
             else
             {
-                InicijalizarSito(max);
-                ProsijajSito();
+                InicijalizirajNizZastavica(max);
+                EliminirajVišekratnike();
                 SkupiPrimove();
 
                 return primovi; // vrati niz brojeva
@@ -49,46 +50,39 @@ namespace Vsite.Pood
 
         private static void SkupiPrimove()
         {
-            int broj = 0;
-            for (int i = 0; i < s; ++i)
-            {
-                if (f[i])
-                    ++broj;
-            }
-
-            primovi = new int[broj];
-
+            List<int> prin = new List<int>();
             // prebaci primbrojeve u rezultat
-            for (int i = 0, j = 0; i < s; ++i)
+            for (int i = 2; i < neelimirani.Length; ++i)
             {
-                if (f[i])
-                    primovi[j++] = i;
+                if (!neelimirani[i])
+                    prin.Add(i);
+            }
+            primovi = prin.ToArray();
+        }
+
+        private static void EliminirajVišekratnike()
+        {
+            for (int i = 2; i < DajNjvećiFaktor(); ++i)
+            {
+                if (!neelimirani[i]) // ako i nije prekrižen, prekriži njegove višekratnike
+                    EliminarjVišekratnike(i);
             }
         }
 
-        private static void ProsijajSito()
+        private static int DajNjvećiFaktor()
         {
-            for (int i = 2; i < Math.Sqrt(s) + 1; ++i)
-            {
-                if (f[i]) // ako i nije prekrižen, prekriži njegove višekratnike
-                {
-                    for (int j = 2 * i; j < s; j += i)
-                        f[j] = false; // višekratnik nije primbroj
-                }
-            }
+            return (int)(Math.Sqrt(neelimirani.Length) + 1);
         }
 
-        private static void InicijalizarSito(int max)
+        private static void EliminarjVišekratnike(int i)
         {
-            s = max + 1; // duljina niza
-            f = new bool[s]; // niz s primbrojevima
+            for (int j = 2 * i; j < neelimirani.Length; j += i)
+                neelimirani[j] = true; // višekratnik nije primbroj
+        }
 
-            // inicijaliziramo sve na true
-            for (int i = 0; i < s; ++i)
-                f[i] = true;
-
-            // ukloni 0 i 1 koji su primbrojevi po definiciji
-            f[0] = f[1] = false;
+        private static void InicijalizirajNizZastavica(int max)
+        {
+            neelimirani = new bool[max +1]; // niz s primbrojevima
         }
     }
 }
