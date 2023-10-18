@@ -29,6 +29,8 @@ namespace Vsite.Pood
                     Console.WriteLine(number);
                 }
             }
+
+            //Console.ReadLine();
         }
 
         // From the book "Agile Principles, Patterns and Practices in C#", by Robert C. Martin

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Primes", "Primes\Primes.csproj", "{F197D14D-2A8D-499E-82F8-71D5ACD61689}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{0E58B41B-272D-40E7-B03D-BFF844F4FC25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +17,15 @@ Global
 		{F197D14D-2A8D-499E-82F8-71D5ACD61689}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F197D14D-2A8D-499E-82F8-71D5ACD61689}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F197D14D-2A8D-499E-82F8-71D5ACD61689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E58B41B-272D-40E7-B03D-BFF844F4FC25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E58B41B-272D-40E7-B03D-BFF844F4FC25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E58B41B-272D-40E7-B03D-BFF844F4FC25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E58B41B-272D-40E7-B03D-BFF844F4FC25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90BF4C8C-FDD3-43BE-9186-24BA7AA00180}
 	EndGlobalSection
 EndGlobal
